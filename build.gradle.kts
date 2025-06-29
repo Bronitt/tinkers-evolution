@@ -191,7 +191,7 @@ dependencies { // THE BEAST
     @Suppress("UNCHECKED_CAST")
     fun <T> deobf(depSpec: T): T = rfg.deobf(depSpec) as T
     
-    api("io.github.phantamanta44.libnine:libnine-1.12.2:1.2.1")
+    api("curse.maven:libnine-322344:3509087") // 1.2.1
     api(deobf("mezz.jei:jei_1.12.2:4.15.0.293"))
     api(deobf("slimeknights.mantle:Mantle:1.12-1.3.3.56"))
     api(deobf("slimeknights:TConstruct:1.12.2-2.13.0.184"))
@@ -202,15 +202,14 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:brandons-core-231382:3051539")) // 2.4.19.214
     compileOnly(deobf("curse.maven:draconic-evolution-223565:3051542")) // 2.3.27.353
     compileOnly(deobf("vazkii.botania:Botania:r1.10-363.148"))
-    compileOnly(deobf("com.teamwizardry.librarianlib:librarianlib-1.12.2:4.19.1"))
+    compileOnly(deobf("curse.maven:librarianlib-252910:3041340")) // 4.22
     compileOnly(deobf("curse.maven:natural-pledge-247704:2740703")) // r3.1.2
     compileOnly(deobf("cofh:CoFHCore:1.12.2-4.6.3.27:universal"))
     compileOnly(deobf("cofh:ThermalFoundation:1.12.2-2.6.3.27:universal"))
     compileOnly(deobf("cofh:ThermalExpansion:1.12.2-5.5.4.43:universal"))
     compileOnly(deobf("curse.maven:industrial-foregoing-266515:2745321")) // 1.12.13-237
     compileOnly(deobf("curse.maven:applied-energistics-2-223794:2747063")) // rv6-stable-7
-    compileOnly(deobf("curse.maven:mekanism-268560:2835175")) // 9.8.3.390
-    compileOnly(deobf("curse.maven:mekanism-generators-268566:2835177")) // 9.8.3.390
+    compileOnly(deobf("curse.maven:mekanism-ce-unofficial-840735:6550161")) // 9.9.1.227
     compileOnly(deobf("curse.maven:actually-additions-228404:2844115")) // r151-2
     compileOnly(deobf("curse.maven:thaumcraft-223628:2629023")) // 6.1.BETA26
     compileOnly(deobf("curse.maven:astral-sorcery-241721:2971187")) // 1.10.24
@@ -225,8 +224,8 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:natural-absorption-224296:2678478")) // 1.0.0
     compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:3483422")) // 2.0.0
     compileOnly(deobf("curse.maven:solar-flux-reborn-246974:3050838")) // 12.4.11
-    compileOnly(deobf("com.enderio.core:EnderCore:1.12.2-0.5.76"))
-    compileOnly(deobf("com.enderio:EnderIO:1.12.2-5.3.68")) {
+    compileOnly(deobf("curse.maven:endercore-231868:4671384")) // 0.5.78
+    compileOnly(deobf("curse.maven:ender-io-64578:4674244")) /* 5.3.72 */ {
         exclude(group = "com.enderio", module = "ap")
         exclude(group = "deobf.com.enderio.core")
     }
