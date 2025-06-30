@@ -62,7 +62,7 @@ group = props.modPackage
 version = props.modVersion
 
 base {
-    archivesName = withProps { "$modId-$mcVersion" }
+    archivesName = withProps { "$modId-$mcVersion-MekaCEU" }
 }
 
 /*
