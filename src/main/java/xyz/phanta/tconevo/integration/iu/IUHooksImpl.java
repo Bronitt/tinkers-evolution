@@ -51,7 +51,7 @@ public class IUHooksImpl implements IUHooks {
                             new RecipeOutput(nbt, TconEvoItems.METAL.newStack(ItemMetal.Type.ENERGETIC_METAL, ItemMetal.Form.INGOT, 1))
             ));
 
-        }
+        } else LOGGER.error("energiumDust nullable");
 
         Fluid uuMatter = FluidRegistry.getFluid("iufluiduu_matter");
         if (uuMatter != null) {
@@ -67,7 +67,7 @@ public class IUHooksImpl implements IUHooks {
                             new InputFluid(new FluidStack(uuMatter, 72)),
                             Collections.singletonList(new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot))));
 
-        }
+        } else LOGGER.error("uuMatter nullable");
         for(int i = 0; i < 10; i++) LOGGER.debug("Recipes load");
     }
 
