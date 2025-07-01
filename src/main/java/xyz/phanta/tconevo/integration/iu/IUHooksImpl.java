@@ -56,8 +56,16 @@ public class IUHooksImpl implements IUHooks {
         Fluid uuMatter = FluidRegistry.getFluid("iufluiduu_matter");
         if (uuMatter != null) {
             NBTTagCompound nbt = ModUtils.nbt();
-            Recipes.recipes.addRecipe("fluid_integrator", new BaseMachineRecipe(new Input(new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1))), new RecipeOutput((NBTTagCompound)null, new ItemStack[]{})));
-            Recipes.recipes.getRecipeFluid().addRecipe("fluid_integrator", new BaseFluidMachineRecipe(new InputFluid(new FluidStack(uuMatter, 72)), Collections.singletonList(new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot))));
+            Recipes.recipes.addRecipe(
+                    "fluid_integrator",
+                    new BaseMachineRecipe(
+                            new Input(new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1))),
+                            new RecipeOutput((NBTTagCompound)null, new ItemStack[]{})));
+            Recipes.recipes.getRecipeFluid().addRecipe(
+                    "fluid_integrator",
+                    new BaseFluidMachineRecipe(
+                            new InputFluid(new FluidStack(uuMatter, 72)),
+                            Collections.singletonList(new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot))));
 
         }
         for(int i = 0; i < 10; i++) LOGGER.debug("Recipes load");
