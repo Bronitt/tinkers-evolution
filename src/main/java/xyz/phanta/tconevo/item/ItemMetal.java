@@ -13,6 +13,7 @@ import xyz.phanta.tconevo.integration.bloodmagic.BloodMagicHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.integration.iu.IUHooks;
 import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 
 import javax.annotation.Nullable;
@@ -45,6 +46,8 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
         return new ItemStack(this, count, type.ordinal() * Form.VALUES.length + form.ordinal());
     }
 
+    protected static final String IUorIC2ModId = (Loader.isModLoaded(IUHooks.MOD_ID)) ? IUHooks.MOD_ID : Ic2Hooks.MOD_ID;
+
     public enum Type implements IStringSerializable {
 
         WYVERN_METAL("WyvernMetal", DraconicHooks.MOD_ID),
@@ -54,8 +57,8 @@ public class ItemMetal extends L9ItemSubs implements ParameterizedItemModel.IPar
         PRIMAL_METAL("Primordial", ThaumHooks.MOD_ID),
         BOUND_METAL("BoundMetal", BloodMagicHooks.MOD_ID),
         SENTIENT_METAL("SentientMetal", BloodMagicHooks.MOD_ID),
-        ENERGETIC_METAL("Energium", Ic2Hooks.MOD_ID),
-        UNIVERSAL_METAL("UUMatter", Ic2Hooks.MOD_ID);
+        ENERGETIC_METAL("Energium", ItemMetal.IUorIC2ModId),
+        UNIVERSAL_METAL("UUMatter", ItemMetal.IUorIC2ModId);
 
         public static final Type[] VALUES = values();
 
