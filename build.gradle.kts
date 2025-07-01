@@ -62,7 +62,7 @@ group = props.modPackage
 version = props.modVersion
 
 base {
-    archivesName = withProps { "$modId-$mcVersion-MekaCEU" }
+    archivesName = withProps { "$modId-$mcVersion-MekaCEU-IU" }
 }
 
 /*
@@ -220,6 +220,7 @@ dependencies { // THE BEAST
     compileOnly(deobf("curse.maven:valkyrielib-245480:2691542")) // 2.0.20.1
     compileOnly(deobf("curse.maven:environmental-tech-245453:2691536")) // 2.0.20.1
     compileOnly(deobf("net.industrial-craft:industrialcraft-2:2.8.91-ex112"))
+    compileOnly(deobf("curse.maven:industrial-upgrade-372007:6700858")) // 3.3.0.42
     compileOnly(deobf("curse.maven:advanced-solar-panels-252714:2652182")) // 4.2.1
     compileOnly(deobf("curse.maven:natural-absorption-224296:2678478")) // 1.0.0
     compileOnly(deobf("curse.maven:redstone-repository-revolved-300750:3483422")) // 2.0.0

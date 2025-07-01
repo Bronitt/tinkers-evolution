@@ -11,6 +11,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
+import xyz.phanta.tconevo.integration.iu.IUHooksImpl;
 import xyz.phanta.tconevo.util.ReflectionHackUtils;
 
 import java.lang.reflect.Field;
@@ -26,6 +27,7 @@ public class IntegrationManager {
     public static void injectHooks(ASMDataTable annotTable) {
         for (ASMDataTable.ASMData annot : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
             String modId = (String)annot.getAnnotationInfo().get("value");
+            IUHooksImpl.LOGGER.info(modId + " - " + annot);
             if (!Loader.isModLoaded(modId)) {
                 TconEvoMod.LOGGER.info("Ignoring integration for missing mod: {}", modId);
             } else if (blacklisted.contains(modId)) {

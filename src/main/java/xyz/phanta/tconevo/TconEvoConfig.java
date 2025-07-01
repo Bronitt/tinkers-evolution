@@ -1429,6 +1429,55 @@ public class TconEvoConfig {
 
     }
 
+    @Config.Comment("Configuration for the IU module")
+    public static final IU moduleIndustrialUpgrade = new IU();
+
+    public static class IU {
+
+//        @Config.Comment("The cost, in EF, per point of durability absorbed on tools with the electric trait.")
+//        @Config.RangeDouble(min = 0D)
+//        public double electricToolEnergyCost = 100D;
+
+//        @Config.Comment("The total Ef that can be stored in tools with the electric trait.")
+//        @Config.RangeDouble(min = 0D)
+//        public double electricToolEnergyBuffer = 30000D;
+
+//        @Config.Comment({
+//                "The divider used to calculate the maximum energy transfer rate for electric equipment.",
+//                "Transfer rate is calculated as `capacity/n`, where `n` is this config value.",
+//                "Set to zero for unlimited transfer rate."
+//        })
+//        @Config.RangeDouble(min = 0D)
+//        public double electricPowerTransferDivider = 100;
+
+//        @Config.Comment("The power tier for equipment with the electric trait.")
+//        @Config.RangeInt(min = 1)
+//        public int electricPowerTier = 1;
+
+//        @Config.Comment({
+//                "The cost, in EF, per point of durability absorbed on armour with the electric trait.",
+//                "Only useful with Construct's Armoury installed."
+//        })
+//        @Config.RangeDouble(min = 0D)
+//        public double electricArmourEnergyCost = 400D;
+
+//        @Config.Comment({
+//                "The total EF that can be stored in armour with the electric trait.",
+//                "Only useful with Construct's Armoury installed."
+//        })
+//        @Config.RangeDouble(min = 0D)
+//        public double electricArmourEnergyBuffer = 30000D;
+
+//        @Config.Comment({
+//                "The burn time, in ticks, per 50 mB of superheated steam when used as a smeltery fuel.",
+//                "Set to zero to disable superheated steam as a smeltery fuel."
+//        })
+//        @Config.RangeInt(min = 0)
+//        @Config.RequiresMcRestart
+//        public int fuelSuperheatedSteamBurnTime = 12;
+
+    }
+
     @Config.Comment("Configuration for the Natural Absorption module.")
     public static final NaturalAbsorption moduleNaturalAbsorption = new NaturalAbsorption();
 
