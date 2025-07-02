@@ -1,37 +1,28 @@
 package xyz.phanta.tconevo.integration.iu;
 
-import com.denfop.api.Recipes;
+import com.denfop.tiles.mechanism.TileEntityFluidIntegrator;
 import com.denfop.IUItem;
-import com.denfop.api.recipe.*;
-import com.denfop.recipe.IInputHandler;
-import com.denfop.recipe.IInputItemStack;
 import com.denfop.recipe.InputItemStack;
-import com.denfop.utils.ModUtils;
+import com.denfop.tiles.mechanism.dual.heat.TileAlloySmelter;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import slimeknights.tconstruct.library.materials.Material;
 import xyz.phanta.tconevo.init.TconEvoItems;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.item.ItemMaterial;
 import xyz.phanta.tconevo.item.ItemMetal;
 
-import java.util.Collections;
-
 @Reflected
 public class IUHooksImpl implements IUHooks {
 
     private static final IUHooks NOOP = new IUHooks.Noop();
-    public static final Logger LOGGER = LogManager.getLogger("IU Recipes");
 
     @Override
     public void onInit(FMLInitializationEvent event) {
@@ -39,36 +30,24 @@ public class IUHooksImpl implements IUHooks {
         ItemStack energiumDust = IUItem.energiumDust;
         if (energiumDust != null) {
 
-            NBTTagCompound nbt = ModUtils.nbt();
-            nbt.setShort("temperature", (short)6000);
+            TileAlloySmelter.addAlloysmelter(
+                    new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)),
+                    new InputItemStack(new ItemStack(IUItem.energiumDust.getItem(), 9)),
+                    TconEvoItems.METAL.newStack(ItemMetal.Type.ENERGETIC_METAL, ItemMetal.Form.INGOT, 1),
+                    6000
+            );
 
-            IInputHandler input = Recipes.inputFactory;
-
-            Recipes.recipes.addAdderRecipe(
-                    "alloysmelter",
-                    new BaseMachineRecipe(
-                            new Input(new IInputItemStack[]{new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)), new InputItemStack(new ItemStack(IUItem.energiumDust.getItem(), 9))}),
-                            new RecipeOutput(nbt, TconEvoItems.METAL.newStack(ItemMetal.Type.ENERGETIC_METAL, ItemMetal.Form.INGOT, 1))
-            ));
-
-        } else LOGGER.error("energiumDust nullable");
+        }
 
         Fluid uuMatter = FluidRegistry.getFluid("iufluiduu_matter");
         if (uuMatter != null) {
-            NBTTagCompound nbt = ModUtils.nbt();
-            Recipes.recipes.addRecipe(
-                    "fluid_integrator",
-                    new BaseMachineRecipe(
-                            new Input(new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1))),
-                            new RecipeOutput((NBTTagCompound)null, new ItemStack[]{})));
-            Recipes.recipes.getRecipeFluid().addRecipe(
-                    "fluid_integrator",
-                    new BaseFluidMachineRecipe(
-                            new InputFluid(new FluidStack(uuMatter, 72)),
-                            Collections.singletonList(new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot))));
-
-        } else LOGGER.error("uuMatter nullable");
-        for(int i = 0; i < 10; i++) LOGGER.debug("Recipes load");
+            TileEntityFluidIntegrator.addRecipe(
+                    ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1),
+                    (ItemStack)null,
+                    new FluidStack(uuMatter, 72),
+                    new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot)
+            );
+        }
     }
 
 //    @Override
