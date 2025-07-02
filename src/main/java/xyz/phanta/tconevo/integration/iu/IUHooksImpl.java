@@ -4,6 +4,7 @@ import com.denfop.items.resource.ItemDust;
 import com.denfop.tiles.mechanism.TileEntityFluidIntegrator;
 import com.denfop.IUItem;
 import com.denfop.recipe.InputItemStack;
+import com.denfop.tiles.mechanism.TileEntitySingleFluidAdapter;
 import com.denfop.tiles.mechanism.dual.heat.TileAlloySmelter;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.EntityLivingBase;
@@ -42,11 +43,11 @@ public class IUHooksImpl implements IUHooks {
 
         Fluid uuMatter = FluidRegistry.getFluid("iufluiduu_matter");
         if (uuMatter != null) {
-            TileEntityFluidIntegrator.addRecipe(
+            TileEntitySingleFluidAdapter.addRecipe(
                     ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1),
-                    (ItemStack)null,
                     new FluidStack(uuMatter, 72),
                     new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot)
+
             );
         }
     }
