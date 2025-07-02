@@ -42,11 +42,11 @@ public class IUHooksImpl implements IUHooks {
 
         Fluid uuMatter = FluidRegistry.getFluid("iufluiduu_matter");
         if (uuMatter != null) {
-            TileEntityFluidIntegrator.addRecipe(
+            TileEntitySingleFluidAdapter.addRecipe(
                     ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1),
-                    (ItemStack)null,
                     new FluidStack(uuMatter, 72),
                     new FluidStack(TconEvoMaterials.UU_METAL.getFluid(), Material.VALUE_Ingot)
+
             );
         }
     }
