@@ -1,9 +1,8 @@
 package xyz.phanta.tconevo.integration.iu;
 
-import com.denfop.items.resource.ItemDust;
-import com.denfop.tiles.mechanism.TileEntityFluidIntegrator;
 import com.denfop.IUItem;
 import com.denfop.recipe.InputItemStack;
+import com.denfop.tiles.mechanism.TileEntitySingleFluidAdapter;
 import com.denfop.tiles.mechanism.dual.heat.TileAlloySmelter;
 import io.github.phantamanta44.libnine.util.nullity.Reflected;
 import net.minecraft.entity.EntityLivingBase;
