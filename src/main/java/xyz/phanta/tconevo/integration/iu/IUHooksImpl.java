@@ -1,5 +1,6 @@
 package xyz.phanta.tconevo.integration.iu;
 
+import com.denfop.items.resource.ItemDust;
 import com.denfop.tiles.mechanism.TileEntityFluidIntegrator;
 import com.denfop.IUItem;
 import com.denfop.recipe.InputItemStack;
@@ -32,7 +33,7 @@ public class IUHooksImpl implements IUHooks {
 
             TileAlloySmelter.addAlloysmelter(
                     new InputItemStack(ItemMaterial.Type.COALESCENCE_MATRIX.newStack(1)),
-                    new InputItemStack(new ItemStack(IUItem.energiumDust.getItem(), 9)),
+                    new InputItemStack(new ItemStack(IUItem.energiumDust.getItem(),9,24)),
                     TconEvoItems.METAL.newStack(ItemMetal.Type.ENERGETIC_METAL, ItemMetal.Form.INGOT, 1),
                     6000
             );
