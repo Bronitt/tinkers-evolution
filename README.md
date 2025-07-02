@@ -52,6 +52,8 @@ Current mod integration modules are as follows:
 * **Industrial Foregoing**
     * Adds IF-based materials, including a powerful pink metal material
     * Adds meat ingots! Tasty!
+* **Industrial Upgrade**
+    * Adds Energium and UU-metal compatibilities
 * **Mekanism**
     * Adds osmium, refined obsidian/glowstone, and HDPE materials
     * Allows the energy tablet to apply the "fluxed" modifier
