@@ -1,6 +1,7 @@
 package xyz.phanta.tconevo.init;
 
 import io.github.phantamanta44.libnine.InitMe;
+import net.minecraftforge.fml.common.Loader;
 import slimeknights.tconstruct.library.materials.Material;
 import slimeknights.tconstruct.library.utils.HarvestLevels;
 import slimeknights.tconstruct.tools.TinkerMaterials;
@@ -12,6 +13,7 @@ import xyz.phanta.tconevo.integration.botania.BotaniaHooks;
 import xyz.phanta.tconevo.integration.draconicevolution.DraconicHooks;
 import xyz.phanta.tconevo.integration.ic2.Ic2Hooks;
 import xyz.phanta.tconevo.integration.industrialforegoing.ForegoingHooks;
+import xyz.phanta.tconevo.integration.iu.IUHooks;
 import xyz.phanta.tconevo.integration.projecte.EqExHooks;
 import xyz.phanta.tconevo.integration.thaumcraft.ThaumHooks;
 import xyz.phanta.tconevo.material.MaterialBuilder;
@@ -590,16 +592,29 @@ public class TconEvoMaterials {
                 .withStatsBow(0.85F, 1.25F, 2F)
                 .withTraits(PartType.TOOL, TinkerTraits.dense, TconEvoTraits.TRAIT_IMPACT_FORCE)
                 .build();
-        ENERGIUM = new MaterialBuilder(NameConst.MAT_ENERGIUM, 0xc83838, MaterialForm.METAL, "Energium")
-                .requiresMods(Ic2Hooks.MOD_ID)
-                .setCastable(1400)
-                .withStatsHead(512, 8.5F, 6F, HarvestLevels.OBSIDIAN)
-                .withStatsMagic(512, 6F, 1F, HarvestLevels.OBSIDIAN)
-                .withStatsHandle(0.8F, 40)
-                .withStatsExtra(50)
-                .withStatsBow(0.75F, 1F, 3.5F)
-                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ELECTRIC)
-                .build();
+        if (Loader.isModLoaded(IUHooks.MOD_ID)) {
+            ENERGIUM = new MaterialBuilder(NameConst.MAT_ENERGIUM, 0xc83838, MaterialForm.METAL, "Energium")
+                    .requiresMods(IUHooks.MOD_ID)
+                    .setCastable(1400)
+                    .withStatsHead(512, 8.5F, 6F, HarvestLevels.OBSIDIAN)
+                    .withStatsMagic(512, 6F, 1F, HarvestLevels.OBSIDIAN)
+                    .withStatsHandle(0.8F, 40)
+                    .withStatsExtra(50)
+                    .withStatsBow(0.75F, 1F, 3.5F)
+                    .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ELECTRIC)
+                    .build();
+        } else if (Loader.isModLoaded(Ic2Hooks.MOD_ID)) {
+            ENERGIUM = new MaterialBuilder(NameConst.MAT_ENERGIUM, 0xc83838, MaterialForm.METAL, "Energium")
+                    .requiresMods(Ic2Hooks.MOD_ID)
+                    .setCastable(1400)
+                    .withStatsHead(512, 8.5F, 6F, HarvestLevels.OBSIDIAN)
+                    .withStatsMagic(512, 6F, 1F, HarvestLevels.OBSIDIAN)
+                    .withStatsHandle(0.8F, 40)
+                    .withStatsExtra(50)
+                    .withStatsBow(0.75F, 1F, 3.5F)
+                    .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_ELECTRIC)
+                    .build();
+        }
         CARBON_FIBER = new MaterialBuilder(NameConst.MAT_CARBON_FIBER, 0x323232, MaterialForm.PLATE, "Carbon")
                 .requiresOres("plateCarbon")
                 .setCraftable()
@@ -618,16 +633,29 @@ public class TconEvoMaterials {
                 .withStatsBow(0.6F, 2F, 5.5F)
                 .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_OVERWHELM, TinkerTraits.momentum)
                 .build();
-        UU_METAL = new MaterialBuilder(NameConst.MAT_UU_METAL, 0xd75dd6, MaterialForm.METAL, "UUMatter")
-                .requiresMods(Ic2Hooks.MOD_ID)
-                .setCastable(420)
-                .withStatsHead(17, 15F, 10F, 5)
-                .withStatsMagic(17, 12F, 0.75F, 5)
-                .withStatsHandle(2F, 0)
-                .withStatsExtra(420)
-                .withStatsBow(1.25F, 1.25F, 0F)
-                .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RUINATION, TinkerTraits.crumbling)
-                .build();
+        if (Loader.isModLoaded(IUHooks.MOD_ID)) {
+            UU_METAL = new MaterialBuilder(NameConst.MAT_UU_METAL, 0xd75dd6, MaterialForm.METAL, "UUMatter")
+                    .requiresMods(IUHooks.MOD_ID)
+                    .setCastable(420)
+                    .withStatsHead(17, 15F, 10F, 5)
+                    .withStatsMagic(17, 12F, 0.75F, 5)
+                    .withStatsHandle(2F, 0)
+                    .withStatsExtra(420)
+                    .withStatsBow(1.25F, 1.25F, 0F)
+                    .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RUINATION, TinkerTraits.crumbling)
+                    .build();
+        } else if (Loader.isModLoaded(Ic2Hooks.MOD_ID)) {
+            UU_METAL = new MaterialBuilder(NameConst.MAT_UU_METAL, 0xd75dd6, MaterialForm.METAL, "UUMatter")
+                    .requiresMods(Ic2Hooks.MOD_ID)
+                    .setCastable(420)
+                    .withStatsHead(17, 15F, 10F, 5)
+                    .withStatsMagic(17, 12F, 0.75F, 5)
+                    .withStatsHandle(2F, 0)
+                    .withStatsExtra(420)
+                    .withStatsBow(1.25F, 1.25F, 0F)
+                    .withTraits(PartType.TOOL, TconEvoTraits.TRAIT_RUINATION, TinkerTraits.crumbling)
+                    .build();
+        }
 
         // mekanism
         OSMIUM = new MaterialBuilder(NameConst.MAT_OSMIUM, 0xa9bdcc, MaterialForm.METAL, "Osmium")
