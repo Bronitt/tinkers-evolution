@@ -28,14 +28,16 @@ public class IntegrationManager {
 
         //FIXME
         try {
-            ASMDataTable.ASMData an = null;
-            for (ASMDataTable.ASMData annotation : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
-                an = annotation;
-                break;
+            if (Loader.isModLoaded(IUHooksImpl.MOD_ID)) {
+                ASMDataTable.ASMData an = null;
+                for (ASMDataTable.ASMData annotation : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
+                    an = annotation;
+                    break;
+                }
+                Map<String, Object> annotationInfo = new HashMap<>();
+                annotationInfo.put("value", (Object) IUHooksImpl.MOD_ID);
+                annotTable.addASMData(an.getCandidate(), "xyz.phanta.tconevo.integration.IntegrationHooks$Inject", "xyz.phanta.tconevo.integration.iu.IUHooks", "INSTANCE", annotationInfo);
             }
-            Map<String, Object> annotationInfo = new HashMap<>();
-            annotationInfo.put("value", (Object) IUHooksImpl.MOD_ID);
-            annotTable.addASMData(an.getCandidate(), "xyz.phanta.tconevo.integration.IntegrationHooks$Inject", "xyz.phanta.tconevo.integration.iu.IUHooks", "INSTANCE", annotationInfo);
         } catch (NullPointerException e) {TconEvoMod.LOGGER.info("annotation nullable: ", e);}
 
         for (ASMDataTable.ASMData annot : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
