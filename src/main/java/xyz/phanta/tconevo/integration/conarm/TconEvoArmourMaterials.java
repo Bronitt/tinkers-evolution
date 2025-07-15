@@ -1,10 +1,13 @@
 package xyz.phanta.tconevo.integration.conarm;
 
 import c4.conarm.common.armor.traits.ArmorTraits;
+import net.minecraftforge.fml.common.Loader;
 import xyz.phanta.tconevo.init.TconEvoMaterials;
 import xyz.phanta.tconevo.init.TconEvoTraits;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourMaterialBuilder;
 import xyz.phanta.tconevo.integration.conarm.material.ArmourPartType;
+import xyz.phanta.tconevo.integration.ic2.Ic2HooksImpl;
+import xyz.phanta.tconevo.integration.iu.IUHooksImpl;
 
 public class TconEvoArmourMaterials {
 
@@ -234,10 +237,13 @@ public class TconEvoArmourMaterials {
                 .withStatsArmour(24F, 22F, 1F, 10.5F, 2F, 14F)
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.dense, ArmorTraits.indomitable)
                 .build();
-        new ArmourMaterialBuilder(TconEvoMaterials.ENERGIUM)
-                .withStatsArmour(16F, 20F, 0.8F, 7F, 0F, 9.5F)
-                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ELECTRIC)
-                .build();
+        //FIXME
+        if (Loader.isModLoaded(IUHooksImpl.MOD_ID) || Loader.isModLoaded(Ic2HooksImpl.MOD_ID)) {
+            new ArmourMaterialBuilder(TconEvoMaterials.ENERGIUM)
+                    .withStatsArmour(16F, 20F, 0.8F, 7F, 0F, 9.5F)
+                    .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_ELECTRIC)
+                    .build();
+        }
         new ArmourMaterialBuilder(TconEvoMaterials.CARBON_FIBER)
                 .withStatsArmour(28F, 16F, 1.3F, 7F, 5F, 10F)
                 .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_BULWARK, ArmorTraits.lightweight)
@@ -246,10 +252,13 @@ public class TconEvoArmourMaterials {
                 .withStatsArmour(36F, 24F, 0.8F, 13.5F, 3F, 16F)
                 .withTraits(ArmourPartType.ARMOUR, ArmorTraits.steady, TconEvoArmourTraits.TRAIT_REACTIVE)
                 .build();
-        new ArmourMaterialBuilder(TconEvoMaterials.UU_METAL)
-                .withStatsArmour(1F, 18F, 2F, 0F, 0F, 15F)
-                .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
-                .build();
+        //FIXME
+        if (Loader.isModLoaded(IUHooksImpl.MOD_ID) || Loader.isModLoaded(Ic2HooksImpl.MOD_ID)) {
+            new ArmourMaterialBuilder(TconEvoMaterials.UU_METAL)
+                    .withStatsArmour(1F, 18F, 2F, 0F, 0F, 15F)
+                    .withTraits(ArmourPartType.ARMOUR, TconEvoArmourTraits.TRAIT_PHOENIX_ASPECT)
+                    .build();
+        }
 
         // mekanism
         new ArmourMaterialBuilder(TconEvoMaterials.OSMIUM)

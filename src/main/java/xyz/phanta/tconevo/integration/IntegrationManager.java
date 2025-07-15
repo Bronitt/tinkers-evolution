@@ -5,14 +5,12 @@ import io.github.phantamanta44.libnine.LibNine;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.discovery.ASMDataTable;
-import net.minecraftforge.fml.common.discovery.ModCandidate;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import xyz.phanta.tconevo.TconEvoConfig;
 import xyz.phanta.tconevo.TconEvoMod;
-import xyz.phanta.tconevo.integration.iu.IUHooks;
 import xyz.phanta.tconevo.integration.iu.IUHooksImpl;
 import xyz.phanta.tconevo.util.ReflectionHackUtils;
 
@@ -28,15 +26,17 @@ public class IntegrationManager {
 
         //FIXME
         try {
-            ASMDataTable.ASMData an = null;
-            for (ASMDataTable.ASMData annotation : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
-                an = annotation;
-                break;
+            if (Loader.isModLoaded(IUHooksImpl.MOD_ID)) {
+                ASMDataTable.ASMData an = null;
+                for (ASMDataTable.ASMData annotation : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
+                    an = annotation;
+                    break;
+                }
+                Map<String, Object> annotationInfo = new HashMap<>();
+                annotationInfo.put("value", (Object) IUHooksImpl.MOD_ID);
+                annotTable.addASMData(an.getCandidate(), "xyz.phanta.tconevo.integration.IntegrationHooks$Inject", "xyz.phanta.tconevo.integration.iu.IUHooks", "INSTANCE", annotationInfo);
             }
-            Map<String, Object> annotationInfo = new HashMap<>();
-            annotationInfo.put("value", (Object) IUHooksImpl.MOD_ID);
-            annotTable.addASMData(an.getCandidate(), "xyz.phanta.tconevo.integration.IntegrationHooks$Inject", "xyz.phanta.tconevo.integration.iu.IUHooks", "INSTANCE", annotationInfo);
-        } catch (NullPointerException e) {TconEvoMod.LOGGER.info("annotation nullable: ", e);}
+        } catch (NullPointerException e) {TconEvoMod.LOGGER.error("annotation nullable: ", e);}
 
         for (ASMDataTable.ASMData annot : annotTable.getAll(IntegrationHooks.Inject.class.getName())) {
             String modId = (String)annot.getAnnotationInfo().get("value");
